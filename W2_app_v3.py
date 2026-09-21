@@ -406,8 +406,9 @@ tab_compare, tab_timeline, tab_growth = st.tabs(
 )
 
 with tab_compare:
+    comparison = f"{LABELS[spending_measure]} vs {LABELS[outcome]}".replace("$", "\\$")
     st.markdown(f"**Do countries that spend more have better results?** "
-                f"{LABELS[spending_measure]} vs {LABELS[outcome].lower()}, latest values {start_year}–{end_year}.")
+                f"{comparison}, latest values {start_year}–{end_year}.")
     scatter_data = latest_by_country.dropna(subset=[spending_measure, outcome])
     if len(scatter_data) < 3:
         st.info("Not enough data for this combination. Learning scores exist for 2010, 2017, 2018 "
